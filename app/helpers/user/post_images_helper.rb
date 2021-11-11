@@ -1,0 +1,2 @@
+module User::PostImagesHelper
+end
