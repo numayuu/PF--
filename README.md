@@ -1,24 +1,39 @@
-# README
+# ガジェッター
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ガジェット商品のレビュー投稿サイト
+ガジェット・・・便利な小物、目新しい物という意味
+ガジェット商品(カメラ・スマホ・タブレットなど)の購入を検討している時、商品の値段が高ければ買うまでに悩む人がほとんどだと思います。
+そんな時に使うサイトとなっており、購入者がレビューしている内容を見ることで購入するかしないかの決断の材料となるサイト、
+また質問できる機能をつける事で自分の欲しい情報も入り、かゆいところにも手が届くのも特徴となっております。
 
-Things you may want to cover:
+### サイトテーマ
+ガジェット商品のレビューを投稿でき、購入の検討や情報の交換などができる投稿サイト。
 
-* Ruby version
+### テーマを選んだ理由
+自分自身がガジェット好きというのもあり、高い買い物になるのですごく調べて悩む事が多いですが
+欲しい情報が手に入らず購入をしなかったケースが何度もありました。
+そこでガジェットに特化した情報サイトがあれば自分と同じ悩みの人の助けになると思いこのテーマを選びました。
 
-* System dependencies
+### ターゲットユーザ
+ガジェット好きの方
+スマホ・カメラ・タブレットなど高額な商品を購入検討している方
 
-* Configuration
+### 主な利用シーン
+スマホ・カメラ・タブレットなど高額な商品を購入検討
+ガジェットを買ったが気になる点や不明点がある
 
-* Database creation
+## 設計書
 
-* Database initialization
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1iS_8o5rnUBF5T7P4konEA4r8dCoJd6LkzFK23njEBYc/edit?usp=sharing
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+現在検討中です。
