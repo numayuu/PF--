@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'posts/index'
-    get 'posts/new'
-    get 'posts/show'
-    get 'posts/edit'
-  end
+  root to: 'user/homes#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # 顧客用
   # URL /customers/sign_in ...
@@ -18,5 +13,10 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    sessions: "admin/sessions"
   }
+
+#投稿用
+resources :posts, only: [:index, :show, :edit, :create]
+
+
 
 end
