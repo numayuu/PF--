@@ -1,39 +1,37 @@
-<div class="text-success">
-  <p id="notice">
-    　 <%= flash[ :notice ] %>
-  </p>
-  </div>
+<div class="posts">
+  <h3 style="margin: 20px;">
+    <i class="fas fa-ghost"></i>  投稿一覧
+  </h3>
 
-
-
-
-  <div class="container px-5 px-sm-0">
-    <div class="row">
-      <div class="col-md-3">
-
-      </div>
-      <div class="col-md-8 offset-md-1">
-        <table class="table book-index">
-          <h2>Books</h2>
-          <thead>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-          </thead>
-          <tbody>
-            <% @users.each do |post| %>
-              <tr>
-                <td>
-                  <%= link_to root_path(book.user) do %>
-                    <%= attachment_image_tag book.user, :profile_image, :fill,40,40, fallback: "no_image.png"%>
-                  <% end %>
-                </td>
-                <td><%= link_to book.title, book_path(book.id) %></td>
-                <td><%= book.body %></td>
-              </tr>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="card" style="width: 18%; margin: 10px;">
+        <%= link_to user_post_path(post.id) do %>
+          <%= attachment_image_tag(post, :image, :fill, 300, 300, class: 'card-img-top rounded', fallback: "no_image.jpg") %>
+        <% end %>
+        <div class="card-body">
+          <div class="card-title">
+            <%= link_to user_post_path(post.id), style: "color: black;" do %>
+            <i class="fas fa-ghost"></i>
+            <%= post.title %>
             <% end %>
-          </tbody>
-        </table>
+          </div>
+            <p class="card-text">
+              <small><%= truncate(post.body) %></small>
+            </p>
+          <div class="profile_image">
+            <%= link_to root_path(post.user), style: "color: gray;" do %>
+
+              <%= post.user.name %>
+            <% end %>
+          </div>
+          <p class="card-text text-right">
+            <small class="text-muted">
+              <%= post.created_at.strftime('%Y/%m/%d') %> |
+            </small>
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
+    <% end %>
+   </div>
+</div>

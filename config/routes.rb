@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
  namespace :user do
   #投稿用
-  resources :posts, only: [:index, :show, :edit, :create]
+  resources :posts
  end
 
 
