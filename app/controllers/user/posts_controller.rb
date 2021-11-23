@@ -34,10 +34,9 @@ class User::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag].split(",")
     if @post.update(post_params)
-      @post.save_tags(tag_list)
-      redirect_to post_path(@post), notice: '投稿を更新しました'
+      flash[:notice] = '更新完了しました！'
+      redirect_to user_post_path(@post.id)
     else
       render :edit
     end
@@ -46,7 +45,7 @@ class User::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path(current_user), notice: '投稿を削除しました'
+    redirect_to user_post_path(post.user_id), notice: '投稿削除しました！'
   end
 
   def timeline

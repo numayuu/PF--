@@ -5,8 +5,8 @@
       <%= @user.name %>
     <% end %>
     <% if @post.user == current_user %>
-      <%= link_to "記事編集", edit_user_post_path(@post.id), class: "btn btn-success btn-sm mx-2" %>
-      <%= link_to "記事削除", root_path, method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-dark btn-sm" %>
+      <%= link_to "投稿編集", edit_user_post_path(@post.id), class: "btn btn-success btn-sm mx-2" %>
+      <%= link_to "投稿削除", user_post_path(@post.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-dark btn-sm" %>
     <% end %>
   </div>
 

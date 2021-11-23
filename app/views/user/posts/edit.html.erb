@@ -3,7 +3,7 @@
     <div class="col"></div>
       <div class="col">
         <h3 style="margin: 20px;"><i class="fas fa-edit"></i> 投稿編集</h3>
-          <%= form_with model: @post, url: user_posts_path, local:true do |f| %>
+          <%= form_with model: @post, url: user_post_path, local:true do |f| %>
           <%= render 'layouts/errors', model: f.object %>
         <p>
           <%= f.label :image, '画像' %>

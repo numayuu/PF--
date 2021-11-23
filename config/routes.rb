@@ -14,10 +14,10 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
   }
 
-
+#ユーザー側
  namespace :user do
-  #投稿用
   resources :posts
+  resources :users, only:[:index,:show,:edit,:update]
  end
 
 
