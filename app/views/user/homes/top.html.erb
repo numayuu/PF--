@@ -1,1 +1,38 @@
-hoges
+<div style="background: #FFF;">
+
+<div id="top">
+  <div id="top-images">
+    <div class="top1"></div>
+    <div class="top2"></div>
+    <div class="top3"></div>
+    <div class="top4"></div>
+    <div class="top5"></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md">
+      <h2 class="top-line">ガジェッターへようこそ</h2>
+      <div><%= link_to "サイト概要へ", user_homes_about_path, class:"top-btn"%></div>
+    </div>
+  </div>
+
+    <h2 class="top-line">NEW POSTS</h2>
+    <%= render 'user/homes/card', posts: @posts, user: @user %>
+    <div class="text-center mt-3"><%= link_to "view more", user_posts_path, class:"top-btn"%></div>
+
+  <div id="select" class="top-line">
+    <div class="select-item">
+    <%= link_to new_user_post_path do%>
+      <%= image_tag("no_image.png",size: "40x40")%>
+      <p class="mt-2">投稿する</p>
+    <%end%>
+    </div>
+
+
+
+  </div>
+
+</div>

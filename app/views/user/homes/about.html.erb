@@ -1,2 +1,35 @@
-<h1>User::Homes#about</h1>
-<p>Find me in app/views/user/homes/about.html.erb</p>
+<div class="top">
+<div class="container py-5">
+<div id="box">
+  <div id="images">
+    <div class="nuuman"></div>
+    <div class="image0"></div>
+    <div class="image1"></div>
+    <div class="image2"></div>
+    <div class="image3"></div>
+    <div class="image4"></div>
+    <div class="image5"></div>
+    <div class="image6"></div>
+  </div>
+</div>
+  <div class="row mt-5">
+    <div class="col-md-5">
+      <div class="main-text" style="background-color: #FFF; border-radius: 20px; text-align: center;">
+      <h2 style="padding: 20px 20px 20px;">ガジェットのレビュー投稿サイトです。</h2>
+      <p style="padding: 20px 20px;">ガジェッターは、ガジェットが好き・ガジェット購入したいけど迷ってる！！<br>
+      そんな方へおすすめのサイトです。<br>
+      ガジェット商品のレビューや気になるガジェットの評価を投稿・閲覧し商品の購入目安としてお使い下さい。<br>
+      もちろん気になる商品についての質問もできるので、たくさんの質問お待ちしております。</p>
+      <%= link_to "会員登録＆投稿一覧へ", new_user_registration_path, data: {"turbolinks" => false}, class: "btn btn-lg", style: "background-color: #F38181; color: white;" %>
+    </div>
+  </div>
+  <div class="row py-5">
+  <h2 style="margin-left: 20px; color: white;">
+    <i class="fas fa-ghost"></i>  新着投稿
+  </h2>
+    <div class="card-deck">
+      <%= render 'user/homes/card', posts: @posts, user: @user %>
+    </div>
+  </div>
+</div>
+</div>

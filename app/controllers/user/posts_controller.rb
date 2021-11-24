@@ -48,12 +48,6 @@ class User::PostsController < ApplicationController
     redirect_to user_post_path(post.user_id), notice: '投稿削除しました！'
   end
 
-  def timeline
-    @users = current_user.followings
-    posts = Post.where(user_id: @users).order('created_at DESC')
-    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(9)
-  end
-
 
   private
   def post_params

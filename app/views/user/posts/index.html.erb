@@ -7,7 +7,7 @@
     <% @posts.each do |post| %>
       <div class="card" style="width: 18%; margin: 10px;">
         <%= link_to user_post_path(post.id) do %>
-          <%= attachment_image_tag(post, :image, :fill, 300, 300, class: 'card-img-top rounded', fallback: "no_image.jpg") %>
+          <%= attachment_image_tag(post, :image, :fill, 300, 300, class: 'card-img-top rounded') %>
         <% end %>
         <div class="card-body">
           <div class="card-title">
@@ -20,7 +20,7 @@
               <small><%= truncate(post.body) %></small>
             </p>
           <div class="profile_image">
-            <%= link_to root_path(post.user), style: "color: gray;" do %>
+            <%= link_to user_user_path(post.user), style: "color: gray;" do %>
 
               <%= post.user.name %>
             <% end %>
