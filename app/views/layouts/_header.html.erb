@@ -20,6 +20,16 @@
           <li><%= link_to ' ログイン', new_user_session_path ,class: 'fas fa-sign-in-alt nav-link text-light'%></li>
         <% end %>
         </ul>
+        <% if user_signed_in? %>
+            <div class="search-form">
+              <%= form_with url: search_searches_path, method: :get, local: true do |f| %>
+                <%= f.text_field :content %>
+                <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿タイトル" => "post" }) %>
+                <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+                <%= f.submit '検索' %>
+              <% end %>
+            </div>
+            　<% end %>
       </div>
     </div>
   </nav>

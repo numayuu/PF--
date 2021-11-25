@@ -1,7 +1,7 @@
-<div class="card w-50 mx-auto my-4">
-  <div class="card-text m-2">
-    <%= link_to root_path(@user) do %>
-
+<div class="container">
+  <div class="col-3">
+    <%= link_to user_user_path(@post.user), style: "color: gray;" do %>
+      <%= attachment_image_tag @users, :profile, fallback: "no_image.png", size:"50x50" %>
       <%= @user.name %>
     <% end %>
     <% if @post.user == current_user %>
@@ -9,35 +9,37 @@
       <%= link_to "投稿削除", user_post_path(@post.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-dark btn-sm" %>
     <% end %>
   </div>
-
-  <!--投稿画像-->
+    <!--投稿画像-->
     <%= attachment_image_tag @post, :image, :fill, 300, 200, class: 'card-img-top rounded' %>
-
     <!--投稿本文-->
     <div class="card-body">
       <div class="card-title">
         <h4><%= @post.title %></h4>
       </div>
-
-
-
       <div class="card-text my-2">
         <%= @post.body %>
       </div>
-
-    <!--投稿日時・コメント数・いいねボタン-->
-
+    <!--投稿日時・コメント数・いいね-->
     <div style="text-align: right;">
       <span><%= @post.created_at.strftime('%Y/%m/%d') %>  |</span>
-
-
-
+      <span class="favorite-btn_<%= @post.id %>" id="post_<%= @post.id %>">
+        <%= render 'user/favorites/favorite', post: @post %>
+      </span>
     </div>
-
   <hr>
-
   <!--コメント機能-->
+  <h2 class="top-line">COMMENTS</h2>
+    <div class="row pt-3">
 
-
+      <div class="col-md-4">
+        <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメント入力" ,class:"form-control"%>
+          <%= f.submit "送信する" ,class:"btn btn-outline-secondary mt-1 mb-5"%>
+        <% end %>
+      </div>
+      <div id="comment_area" class="col-md-7 offset-md-1">
+        <%= render "user/post_comments/comment", post_comments: @post_comments %>
+      </div>
+    </div>
   </div>
 </div>

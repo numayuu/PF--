@@ -19,17 +19,11 @@
     </div>
   </div>
 
-    <h2 class="top-line">NEW POSTS</h2>
-    <%= render 'user/homes/card', posts: @posts, user: @user %>
-    <div class="text-center mt-3"><%= link_to "view more", user_posts_path, class:"top-btn"%></div>
 
-  <div id="select" class="top-line">
-    <div class="select-item">
-    <%= link_to new_user_post_path do%>
-      <%= image_tag("no_image.png",size: "40x40")%>
-      <p class="mt-2">投稿する</p>
-    <%end%>
-    </div>
+    <%= render 'user/homes/card', posts: @posts, user: @user %>
+    <div class="text-center mt-3"><%= link_to "新着一覧へ", user_posts_path, class:"top-btn"%></div>
+
+
 
 
 

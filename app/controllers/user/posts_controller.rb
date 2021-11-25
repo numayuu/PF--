@@ -1,6 +1,5 @@
 class User::PostsController < ApplicationController
-
-
+  before_action :authenticate_user!
   def new
     @post = Post.new
   end
@@ -22,7 +21,9 @@ class User::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comments = @post.post_comments.includes(:user)
     @user = @post.user
+    @post_comment = PostComment.new
   end
 
   def edit
@@ -45,7 +46,7 @@ class User::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_post_path(post.user_id), notice: '投稿削除しました！'
+    redirect_to user_posts_path, notice: '投稿削除しました！'
   end
 
 

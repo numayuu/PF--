@@ -1,37 +1,43 @@
-<div class="posts">
-  <h3 style="margin: 20px;">
-    <i class="fas fa-ghost"></i>  投稿一覧
-  </h3>
+  <div class="container">
+    <div class="col-md">
+      <h2 class="top-line">新着投稿一覧</h2>
+    </div>
+  </div>
 
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="card" style="width: 18%; margin: 10px;">
+<div class="container">
+ <div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-8 mt-2">
+      <div class="card"　style="width: 18rem;">
+        <div class="profile_image">
+          <%= link_to user_user_path(post.user), style: "color: gray;" do %>
+            <%= attachment_image_tag @users, :profile, fallback: "no_image.png", size:"50x50" %>
+            <%= post.user.name %>
+          <% end %>
+        </div>
+        <h5 class="card-title">
+          <%= link_to user_post_path(post.id), style: "color: black;" do %>
+          <i class="fas fa-ghost"></i>
+          <%= post.title %>
+          <% end %>
+        </h5>
         <%= link_to user_post_path(post.id) do %>
-          <%= attachment_image_tag(post, :image, :fill, 300, 300, class: 'card-img-top rounded') %>
+          <%= attachment_image_tag(post, :image, :fill, 100, 60, class: 'card-img-top rounded' ) %>
         <% end %>
         <div class="card-body">
-          <div class="card-title">
-            <%= link_to user_post_path(post.id), style: "color: black;" do %>
-            <i class="fas fa-ghost"></i>
-            <%= post.title %>
-            <% end %>
-          </div>
-            <p class="card-text">
-              <small><%= truncate(post.body) %></small>
-            </p>
-          <div class="profile_image">
-            <%= link_to user_user_path(post.user), style: "color: gray;" do %>
+          <p class="card-text">
+            <%= truncate(post.body) %>
+          </p>
 
-              <%= post.user.name %>
-            <% end %>
-          </div>
           <p class="card-text text-right">
             <small class="text-muted">
-              <%= post.created_at.strftime('%Y/%m/%d') %> |
+              <%= post.created_at.strftime('%Y/%m/%d') %>
             </small>
           </p>
         </div>
       </div>
-    <% end %>
-   </div>
+    </div>
+  <% end %>
+ </div>
 </div>
+
