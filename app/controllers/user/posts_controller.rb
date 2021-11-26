@@ -17,6 +17,7 @@ class User::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @posts = @posts.page(params[:page]).per(10)
   end
 
   def show
@@ -48,6 +49,8 @@ class User::PostsController < ApplicationController
     @post.destroy
     redirect_to user_posts_path, notice: '投稿削除しました！'
   end
+
+
 
 
   private

@@ -31,4 +31,5 @@ Rails.application.routes.draw do
     get 'search'
   end
 
+ get 'sort' => 'user/posts#sort'
 end

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-3">
+  <div class="col-8">
     <%= link_to user_user_path(@post.user), style: "color: gray;" do %>
       <%= attachment_image_tag @users, :profile, fallback: "no_image.png", size:"50x50" %>
       <%= @user.name %>
@@ -10,7 +10,7 @@
     <% end %>
   </div>
     <!--投稿画像-->
-    <%= attachment_image_tag @post, :image, :fill, 300, 200, class: 'card-img-top rounded' %>
+    <%= attachment_image_tag @post, :image, :fill, 300, 300 %>
     <!--投稿本文-->
     <div class="card-body">
       <div class="card-title">
