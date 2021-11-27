@@ -1,53 +1,40 @@
-
+<div class="bg">
   <div class="container">
     <div class="row">
-      <div class="col"></div>
-        <div class="col-5">
-          <h3 style="margin: 20px;"><i class="far fa-address-card"></i> ユーザー詳細</h3>
-          <div style="textmargin: 20px;">
-            <%= attachment_image_tag @users, :profile_image, fallback: "no_image.png", size: "100x100" %>
+      <div class="col-md-6 mx-auto">
+          <h3 style="margin: 20px;"><i class="far fa-address-card"></i> マイページ</h3>
+        <div class="card">
+          <div style="text-margin: 20px;">
+            <%= attachment_image_tag @user, :profile, fallback: "no_image.png", size: "100x100" %>
           </div>
-
-        <table style="textmargin: 60px;">
-          <tr>
-            <th style="line-height: 40px;">ニックネーム</th>
-            <td style="line-height: 40px;"><%= @user.name %></td>
-          </tr>
-          <tr>
-            <th style="line-height: 40px;">自己紹介</th>
-            <td style="line-height: 40px;"><%= @user.introduction %></td>
-          </tr>
-          <% if @user == current_user %>
-          <tr>
-            <th style="line-height: 40px;">メールアドレス</th>
-            <td style="line-height: 40px;"><%= @user.email %></td>
-          </tr>
-          <% end %>
-        </table>
-
-  　　　<div class="row">
-  　　　  <div class="col"></div>
-  　　　  <div class="col-auto">
-  　　　    <% if @user != current_user %>
-
-          <% end %>
-  　　　  </div>
-  　　　  <div class="col"></div>
-  　　　</div>
-
-
-      <% if @user == current_user %>
-        <div style="margin: 10px auto; text-align: left;">
-          <%= link_to "プロフィール編集", edit_user_user_path, class: "btn btn-sm", style: "background-color: #90ee90; color: black;" %>
+          <table style="text-margin: 60px;" class="card">
+            <tr>
+              <th style="line-height: 40px;">ニックネーム</th>
+              <td style="line-height: 40px;"><%= @user.name %></td>
+            </tr>
+            <tr>
+              <th style="line-height: 40px;">自己紹介</th>
+              <td style="line-height: 40px;"><%= @user.introduction %></td>
+            </tr>
+            <% if @user == current_user %>
+            <tr>
+              <th style="line-height: 40px;">メールアドレス</th>
+              <td style="line-height: 40px;"><%= @user.email %></td>
+            </tr>
+            <% end %>
+          </table>
         </div>
-      <% end %>
-        </div>
+        <% if @user == current_user %>
+          <div style="margin: 10px 0 10px 0; text-align: left;">
+            <%= link_to "プロフィール編集", edit_user_user_path, class: "btn btn-sm", style: "background-color: #78d8e3; color: black;" %>
+          </div>
+        <% end %>
         <div class="col"></div>
-    </div>
-    <hr>
-  <% if @posts.exists? %>
-    <%= render 'user/users/card', posts: @posts, post: @post %>
-  <% else %>
-  <p>現在、投稿記事はありません。</p>
-  <% end %>
+      </div>
+      <% if @posts.exists? %>
+        <%= render 'user/users/card', posts: @posts, post: @post %>
+      <% else %>
+      <p>現在、投稿記事はありません。</p>
+      <% end %>
+  </div>
 </div>

@@ -1,14 +1,14 @@
 <header class="header">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container pl-3">
-      <div class="row"><%= link_to image_tag('logo1.jpeg', size: "230x200"), root_path %></div>
+      <div class="row"><%= link_to image_tag('logo1.jpeg', size: "200x230"), root_path %></div>
       <div class="col-9 pl-5 header-1">
-        <ul class="navbar-nav pl-5">
+        <ul class="navbar-nav text-nowrap pl-1">
         <% if user_signed_in? %>
           <li style= "margin-right: 5%;" ><%= link_to ' Home',root_path(current_user),class: 'fas fa-home nav-link text-light' %></li>
           <li style= "margin-right: 5%;" ><%= link_to ' マイページ',user_user_path(current_user.id),class: 'fas fa-users nav-link text-light' %></li>
           <li style= "margin-right: 5%;" ><%= link_to ' 投稿一覧',user_posts_path ,class: 'fas fa-book-open nav-link text-light'%></li>
-          <li style= "margin-right: 5%;" ><%= link_to ' 新規投稿',new_user_post_path ,class: 'fas fa-book-open nav-link text-light'%></li>
+          <li style= "margin-right: 5%;" ><%= link_to ' 新規投稿',new_user_post_path ,class: 'fas fa-pen nav-link text-light'%></li>
           <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% else %>
           <li style= "margin-right: 5%;" ><%= link_to ' Home',root_path,class: 'fas fa-home nav-link text-light' %></li>

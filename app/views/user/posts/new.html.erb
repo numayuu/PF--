@@ -1,28 +1,25 @@
-<div class="row">
-    <div class="col"></div>
-      <div class="col">
-        <h3 style="margin: 20px;"><i class="fas fa-pen"></i>  新規投稿</h3>
-          <%= form_with model: @post, url: user_posts_path, local:true do |f| %>
-          <%= render 'layouts/errors', model: f.object %>
-
-          <p>
+<div class="bg">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h3 style="margin: 20px;"><i class="fas fa-pen"></i>  新規投稿</h3>
+      <%= form_with model: @post, url: user_posts_path, local:true do |f| %>
+      <div class="mt-4 card">
+          <div style="margin: 20px;">
             <%= f.label :body, 'タイトル' %>
             <%= f.text_field :title, placeholder: "タイトル" %>
-          </p>
-
-          <p>
+          </div>
+          <div style="margin: 20px;">
             <%= f.label :post_images_images, '画像' %>
             <%= f.attachment_field :post_images_images, multiple: true %>
-          </p>
-
-
-            <div><%= f.label :body, '本文' %></div>
-            <p>
-              <%= f.text_area :body, pleceholder: "", size: "50x10" %>
-            </p>
-
-              <%= f.submit '投稿', class: "btn mb-2", style: "background-color: #90ee90; color: black;" %>
-          <% end %>
+          </div>
+          <div style="margin: 20px 20px 0 20px;"><%= f.label :body, '本文' %></div>
+          <div style="margin: 0 20px 0 20px;">
+            <%= f.text_area :body, pleceholder: "", size: "50x10" %>
+          </div>
       </div>
-    <div class="col"></div>
+      <div style="margin: 10px 0 10px 0;">
+      <%= f.submit '投稿', class: "btn mb-2", style: "background-color: #78d8e3; color: black;" %>
+      <% end %>
+    </div>
   </div>
+</div>

@@ -15,12 +15,11 @@
 　　<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="bg-header">
     <%= render 'layouts/header' %>
       <main>
         <% if user_signed_in? %>
         <% end %>
-        <p id="notice"><%= notice %></p>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>

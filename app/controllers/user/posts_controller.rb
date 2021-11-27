@@ -9,7 +9,7 @@ class User::PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
     flash[:notice] = "記事を投稿しました！"
-    redirect_to user_posts_path(@post)
+    redirect_to user_post_path(@post)
     else
     render :new
     end

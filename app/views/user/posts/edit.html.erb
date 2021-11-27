@@ -1,27 +1,26 @@
-<div class="form">
+<div class="bg">
   <div class="row">
-    <div class="col"></div>
-      <div class="col">
-        <h3 style="margin: 20px;"><i class="fas fa-edit"></i> 投稿編集</h3>
-          <%= form_with model: @post, url: user_post_path, local:true do |f| %>
-          <%= render 'layouts/errors', model: f.object %>
-        <p>
-          <%= f.label :image, '画像' %>
-          <%= f.attachment_field :image %>
-        </p>
-        <p>
-          <%= f.label :body, 'タイトル' %>
-          <%= f.text_field :title, placeholder: "" %>
-        </p>
-        <div><%= f.label :body, '本文' %></div>
-        <p>
-          <%= f.text_area :body, size: "50x10", pleceholder: "" %>
-        </p>
-
-          <%= f.submit '更新', class: "btn btn-lg btn-block btn-info" %>
-        <% end %>
+    <div class="col-md-6 mx-auto">
+      <h3 style="margin: 20px;"><i class="fas fa-edit"></i>投稿編集</h3>
+      <%= form_with model: @post, url: user_post_path, local:true do |f| %>
+      <div class="mt-4 card">
+          <div style="margin: 20px;">
+            <%= f.label :body, 'タイトル' %>
+            <%= f.text_field :title, placeholder: "タイトル" %>
+          </div>
+          <div style="margin: 20px;">
+            <%= f.label :post_images_images, '画像' %>
+            <%= f.attachment_field :post_images_images, multiple: true %>
+          </div>
+          <div style="margin: 20px 20px 0 20px;"><%= f.label :body, '本文' %></div>
+          <div style="margin: 0 20px 0 20px;">
+            <%= f.text_area :body, pleceholder: "", size: "50x10" %>
+          </div>
+      </div>
+      <div style="margin: 10px 0 10px 0;">
+      <%= f.submit '編集内容を更新', class: "btn mb-2", style: "background-color: #78d8e3; color: black;" %>
+      <% end %>
+      </div>
     </div>
-    <div class="col"></div>
   </div>
 </div>
-

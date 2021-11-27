@@ -2,11 +2,11 @@
     <% posts.each do |post| %>
 
       <div class="card" style="width: 18%; margin: 10px;">
-      <%= attachment_image_tag(post, :image, :fill, 300, 300, class: 'card-img-top rounded', fallback: "no_image.png") %>
+      <%= attachment_image_tag(post, :image, :fill, 200, 200, fallback: "no-image.jpeg") %>
       <div class="card-body">
         <div class="card-title">
-          <%= link_to post_path(post.id), style: "color: black;" do %>
-            <i class="fas fa-ghost"></i>  <%= post.title %>
+          <%= link_to user_post_path(post.id), style: "color: black;" do %>
+            <i class="fas fa-envelope"></i>  <%= post.title %>
           <% end %>
         </div>
           <p class="card-text">
