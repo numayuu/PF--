@@ -44,4 +44,10 @@
         </div>
         <div class="col"></div>
     </div>
-  </div>
+    <hr>
+  <% if @posts.exists? %>
+    <%= render 'user/users/card', posts: @posts, post: @post %>
+  <% else %>
+  <p>現在、投稿記事はありません。</p>
+  <% end %>
+</div>

@@ -10,7 +10,9 @@
     <% end %>
   </div>
     <!--投稿画像-->
-    <%= attachment_image_tag @post, :image, :fill, 300, 300 %>
+    <% @post.post_images.each do |image| %>
+     <%= attachment_image_tag image, :image, :fill, 300, 300 %>
+    <% end %>
     <!--投稿本文-->
     <div class="card-body">
       <div class="card-title">
