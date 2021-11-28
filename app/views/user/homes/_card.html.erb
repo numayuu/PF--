@@ -1,31 +1,32 @@
-<% posts.last(4).each do |post| %>
-    <div class="col-sm mt-2">
-      <div class="card"　style="width: 18rem;">
-        <%= link_to root_path(post.id) do %>
-          <%= attachment_image_tag(post, :image, :fill, 100, 60, class: 'card-img-top rounded' ) %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to root_path(post.id), style: "color: black;" do %>
-            <i class="fas fa-ghost"></i>
-            <%= post.title %>
-            <% end %>
-          </h5>
-          <p class="card-text">
-            <%= truncate(post.body) %>
-          </p>
-          <div class="profile_image">
-            <%= link_to root_path(post.user), style: "color: gray;" do %>
-              <%= attachment_image_tag @users, :profile_image, fallback: "no_image.png", size:"30x30" %>
-              <%= post.user.name %>
-            <% end %>
+
+  <% posts.each do |post| %>
+      <div class="t3">
+        <div class="card">
+          <%= link_to root_path(post.id) do %>
+            <%= attachment_image_tag(post, :image, :fill, 100, 60, class: 'card-img-top rounded' ) %>
+          <% end %>
+          <div>
+            <h5>
+              <%= link_to root_path(post.id), style: "color: black;" do %>
+              <i class="fas fa-ghost"></i>
+              <%= post.title %>
+              <% end %>
+            </h5>
+            <p>
+              <%= truncate(post.body) %>
+            </p>
+            <div class="profile_image">
+              <%= link_to root_path(post.user), style: "color: gray;" do %>
+                <%= attachment_image_tag @users, :profile_image, fallback: "no_image.png", size:"30x30" %>
+                <%= post.user.name %>
+              <% end %>
+            </div>
+            <p class="card-text text-right">
+              <small class="text-muted">
+                <%= post.created_at.strftime('%Y/%m/%d') %>
+              </small>
+            </p>
           </div>
-          <p class="card-text text-right">
-            <small class="text-muted">
-              <%= post.created_at.strftime('%Y/%m/%d') %>
-            </small>
-          </p>
         </div>
       </div>
-    </div>
-<% end %>
+  <% end %>
