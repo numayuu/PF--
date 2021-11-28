@@ -1,56 +1,60 @@
-<div class="row">
- <div class="col"></div>
- <div class="col-10">
-   <% if @model == 'user' %>
-	   <h3 style="margin: 20px auto;">ユーザー検索　"<%= @content %>"</h3>
-     <table class='table table-hover'>
-      <thead>
-       <tr>
-        <th></th>
-        <th>ユーザーネーム</th>
-        <th>自己紹介</th>
-        <th colspan="3"></th>
-       </tr>
-      </thead>
-      <tbody>
-       <% @records.each do |user| %>
-       <tr>
-        <td><%= attachment_image_tag(user, :profile, :fill, 50, 50, fallback: "no_image.png",size: "50x50") %></td>
-        <td><%= user.name %></td>
-        <td><%= truncate(user.introduction) %></td>
-        <td><%= link_to '詳細', user_user_path(user), class: "btn btn-sm", style: "background-color: #90ee90; color: black;"%></td>
-       </tr>
-       <% end %>
-      </tbody>
-     </table>
-   <% elsif @model == 'post' %>
-	   <h3>投稿検索　 "<%= @content %>"</h3>
-     <table class='table table-hover'>
-      <thead>
-       <tr>
-        <th></th>
-        <th>投稿ユーザー</th>
-        <th>タイトル</th>
-        <th>投稿内容</th>
-        <th>いいね数</th>
-       </tr>
-      </thead>
-     <tbody>
-     <% @records.each do |post| %>
-      <tr>
-        <td><%= attachment_image_tag(post, :image, :fill, 50, 50, fallback: "no_image.png",size: "50x50") %></td>
-        <td><%= link_to user_user_path(post.user), style: "color: black;" do %>
-          <%= post.user.name %>
+<div class="bg">
+ <div class="container">
+  <div class="row">
+   <div class="col-10">
+     <% if @model == 'user' %>
+  	   <h3 style="margin: 20px auto;">ユーザー検索　"<%= @content %>"</h3>
+  	    <div class="card">
+        <table class='table table-hover'>
+         <thead>
+          <tr>
+           <th></th>
+           <th>ユーザーネーム</th>
+           <th>自己紹介</th>
+           <th colspan="3"></th>
+          </tr>
+         </thead>
+         <tbody>
+          <% @records.each do |user| %>
+          <tr>
+           <td><%= attachment_image_tag(user, :profile, :fill, 50, 50, fallback: "no_image.png",size: "50x50") %></td>
+           <td><%= user.name %></td>
+           <td><%= truncate(user.introduction) %></td>
+           <td><%= link_to '詳細', user_user_path(user), class: "btn btn-sm", style: "background-color: #78d8e3; color: black;"%></td>
+          </tr>
           <% end %>
-        </td>
-        <td><%= link_to post.title, user_post_path(post), class: "post_#{post.id}" %></td>
-        <td><%= truncate(post.body) %></td>
-        <td><div style="color: #ff1493;">♥ <%= post.favorites.count %></div></td>
-      </tr>
-    <% end %>
-    </tbody>
-   </table>
-  <% end %>
+         </tbody>
+        </table>
+      <% elsif @model == 'post' %>
+   	   <h3>投稿検索　 "<%= @content %>"</h3>
+        <table class='table table-hover'>
+         <thead>
+          <tr>
+           <th></th>
+           <th>投稿ユーザー</th>
+           <th>タイトル</th>
+           <th>投稿内容</th>
+           <th>いいね数</th>
+          </tr>
+         </thead>
+        <tbody>
+        <% @records.each do |post| %>
+         <tr>
+           <td><%= attachment_image_tag(post, :image, :fill, 50, 50, fallback: "no_image.png",size: "50x50") %></td>
+           <td><%= link_to user_user_path(post.user), style: "color: black;" do %>
+             <%= post.user.name %>
+             <% end %>
+           </td>
+           <td><%= link_to post.title, user_post_path(post), class: "post_#{post.id}" %></td>
+           <td><%= truncate(post.body) %></td>
+           <td><div style="color: #ff1493;">♥ <%= post.favorites.count %></div></td>
+         </tr>
+       <% end %>
+       </tbody>
+      </table>
+     <% end %>
+    </div>
+   </div>
+  </div>
  </div>
- <div class="col"></div>
 </div>
