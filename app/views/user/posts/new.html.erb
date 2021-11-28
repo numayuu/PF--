@@ -11,6 +11,9 @@
           <div style="margin: 20px;">
             <%= f.label :post_images_images, '画像' %>
             <%= f.attachment_field :post_images_images, multiple: true %>
+            <h6>複数画像アップロードの場合、ファイル選択後<br>
+                shift + クリックで選択して下さい。
+            </h6>
           </div>
           <div style="margin: 20px 20px 0 20px;"><%= f.label :body, '本文' %></div>
           <div style="margin: 0 20px 0 20px;">
