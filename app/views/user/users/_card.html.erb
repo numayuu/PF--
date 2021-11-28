@@ -1,6 +1,6 @@
-<div class="row">
+ 
+   <div class="row">
     <% posts.each do |post| %>
-
       <div class="card" style="width: 18%; margin: 10px;">
       <%= attachment_image_tag(post, :image, :fill, 200, 200, fallback: "no-image.jpeg") %>
       <div class="card-body">
