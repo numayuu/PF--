@@ -1,0 +1,23 @@
+<div class="bg">
+  <%= form_for(@contact, url: confirm_path) do |f| %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="form-group">
+            <%= f.label :name, 'お名前' %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :message, '問い合わせ内容' %>
+            <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div>
+      <%= f.submit '入力内容確認' %>
+    </div>
+  <% end %>
+</div>
