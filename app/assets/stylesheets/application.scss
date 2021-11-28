@@ -61,7 +61,7 @@
   padding: 0;
 }
 
-//class調整
+//レイアウト
 .t1 {
   margin-left: 250px;
 }
@@ -90,6 +90,8 @@
 
 
 
+
+
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
@@ -110,6 +112,7 @@
 }
 
 
+//top birdAnimation
 .bird {
   position: absolute;
   width: 7px;
