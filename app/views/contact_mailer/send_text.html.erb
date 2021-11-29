@@ -1,6 +1,8 @@
 <%= @contact.name %> 様 から問い合わせがありました。<br>
-【Tel】：<%= @contact.phone_number %><br>
-【Mail】：<%= @contact.email %><br>
-【用件】：<%= @contact.subject_i18n %><br>
-【お問い合わせ内容】<br>
+<h4 class="text-success"><%= @contact.phone_number %></h4><br>
+<h4 class="text-success"><%= @contact.email %></h4><br>
+
+<p>
+  <h4 class="text-success"><%= @contact %></h4>
+</p>
 <span style="white-space: pre-wrap;"><%= @contact.message %></span>
