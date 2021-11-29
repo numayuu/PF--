@@ -3,24 +3,13 @@ class ContactsController < ApplicationController
     @contact = Contact.new
   end
 
-  def confirm
-    @contact = Contact.new(contact_params)
-    if @contact.invalid?
-      render :new
-    end
-  end
-
-  def back
-    @contact = Contact.new(contact_params)
-    render :new
-  end
 
   # 入力内容を保存します。
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
-      redirect_to done_path
+      redirect_to root_path
     else
       render :new
     end
@@ -29,12 +18,7 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact)
-          .permit(:email,
-                  :name,
-                  :phone_number,
-                  :subject,
-                  :message
-                 )
+    params.require(:contact).permit(:email, :name, :phone_number, :subject, :message)
   end
+
 end

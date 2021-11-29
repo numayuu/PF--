@@ -1,23 +1,39 @@
 <div class="bg">
-  <%= form_for(@contact, url: confirm_path) do |f| %>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card">
+  <div class="container" style="padding: 30px 0 0 250px;">
+    <div class="row-md-8">
+      <div class="col-md-7 mx-auto">
+        <%= form_with model: @contact, local: true do |f| %>
           <div class="form-group">
-            <%= f.label :name, 'お名前' %>
-            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+            <%= f.label :name, 'お名前', class: 'post_contact' %><br>
+            <%= f.text_field :name, autofocus: true, class: 'post_zone' %>
           </div>
+
           <div class="form-group">
-            <%= f.label :message, '問い合わせ内容' %>
-            <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+            <%= f.label :email, 'メールアドレス', class: 'post_contact' %><br>
+            <%= f.email_field :email, autofocus: true, class: 'post_zone' %>
           </div>
-        </div>
+
+          <div class="form-group">
+            <%= f.label :phone_number, '電話番号', class: 'post_contact' %><br>
+            <%= f.telephone_field :phone_number, autofocus: true, class: 'post_zone' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :subject, 'タイトル', class: 'post_contact' %><br>
+            <%= f.text_field :subject, autofocus: true, class: 'post_zone' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :message, 'お問い合わせ内容', class: 'post_contact' %></br>
+            <%= f.text_area :message, class: 'post_area' %>
+          </div>
+
+          <div style="padding-bottom: 50px;">
+            <%= f.submit '送信', class: "btn mt-3", style: "background-color: #78d8e3; color: black;" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-    <div>
-      <%= f.submit '入力内容確認' %>
-    </div>
-  <% end %>
 </div>
+

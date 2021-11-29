@@ -1,7 +1,7 @@
 <div class="bg">
   <div class="container">
     <h3 style="padding: 30px;"><i class="fas fa-pen"></i>投稿詳細</h3>
-    <div class="row card">
+    <div class="row card t3">
       <div class="col-8">
         <%= link_to user_user_path(@post.user), style: "color: gray;" do %>
           <%= attachment_image_tag @users, :profile, fallback: "no_image.png", size:"50x50" %>
@@ -15,13 +15,11 @@
         <div class="card-title">
           <h4><%= @post.title %></h4>
         </div>
-        <!--投稿画像-->
         <div class="image">
           <% @post.post_images.each do |image| %>
            <%= attachment_image_tag image, :image, size:"200x200" %>
           <% end %>
         </div>
-        <!--投稿本文-->
         <div class="card-body">
           <div class="card-text my-2">
             <%= @post.body %>
@@ -37,7 +35,6 @@
       <!--コメント機能-->
       <h2 class="top-line">コメント</h2>
         <div class="row pt-3">
-
           <div class="col-md-4">
             <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
               <%= f.text_area :comment, rows:'5',placeholder: "コメント入力" ,class:"form-control"%>
