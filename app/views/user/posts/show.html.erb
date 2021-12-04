@@ -20,6 +20,11 @@
            <%= attachment_image_tag image, :image, size:"200x200" %>
           <% end %>
         </div>
+        <div class="tag-box">
+          <% @post.tags.each do |tag| %>
+           <span class="label"><%= tag.name %></span>
+          <% end %>
+        </div>
         <div class="card-body">
           <div class="card-text my-2">
             <%= @post.body %>

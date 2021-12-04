@@ -8,10 +8,16 @@ class User::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-    flash[:notice] = "記事を投稿しました！"
-    redirect_to user_post_path(@post)
+      @post.post_images_images.each do |image|
+        tags = Vision.get_image_data(image)
+        tags.each do |tag|
+          post.tags.create(name: tag)
+        end
+      end
+      flash[:notice] = "記事を投稿しました！"
+      redirect_to user_post_path(@post)
     else
-    render :new
+      render :new
     end
   end
 
