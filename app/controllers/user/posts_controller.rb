@@ -11,7 +11,7 @@ class User::PostsController < ApplicationController
       @post.post_images_images.each do |image|
         tags = Vision.get_image_data(image)
         tags.each do |tag|
-          post.tags.create(name: tag)
+          @post.tags.create(name: tag, post_id: @post.id)
         end
       end
       flash[:notice] = "記事を投稿しました！"
@@ -24,6 +24,7 @@ class User::PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = @posts.page(params[:page]).per(10)
+    @tag = Tag.all              #ビューでタグ一覧を表示するために全取得。
   end
 
   def show
@@ -31,6 +32,8 @@ class User::PostsController < ApplicationController
     @post_comments = @post.post_comments.includes(:user)
     @user = @post.user
     @post_comment = PostComment.new
+    @post = Post.find(params[:id])  #クリックした投稿を取得。
+    @post_tags = @post.tags         #そのクリックした投稿に紐付けられているタグの取得。
   end
 
   def edit
@@ -54,6 +57,14 @@ class User::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_posts_path, notice: '投稿削除しました！'
+  end
+
+  def search
+    # @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @tag_posts = Tag.where(name: params[:tag_name])  #クリックしたタグを取得
+    # @posts = @tag.posts.all           #クリックしたタグに紐付けられた投稿を全て表示
+    # binding.irb
+    @tag_posts = Kaminari.paginate_array(@tag_posts).page(params[:page]).per(10)
   end
 
 

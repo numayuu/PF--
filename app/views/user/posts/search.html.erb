@@ -1,0 +1,52 @@
+<div class="bg">
+  <div class="container">
+     <div class="t1">
+       <h2 class="fas fa-book-open t2">
+         <%= "タグが ─ " %>
+         <%= params[:tag_name] %>
+         <%= " ─ の投稿一覧" %>
+       </h2>
+      <% @tag_posts.each do |post| %>
+        <div class="col-8 mt-4">
+          <div class="card"　style="width: 18rem;">
+            <div class="profile_image">
+              <%= link_to user_user_path(post.post.user), style: "color: gray;" do %>
+                <%= attachment_image_tag post.post.user, :profile, fallback: "no_image.png", size:"50x50" %>
+                <%= post.post.user.name %>
+              <% end %>
+            </div>
+            <h5 style="margin: 5px 5px 20px 5px;" class="card border-dark">
+              <%= link_to user_post_path(post.post.id), style: "color: black;" do %>
+              <i class="fas fa-envelope"></i>
+              <%= post.post.title %>
+              <% end %>
+            </h5>
+            <p class="card border-dark" style="margin: 5px;">
+              <%= truncate(post.post.body) %>
+            </p>
+            <div class="card-body">
+              <div class="image">
+              <div class="row">
+              <% post.post.post_images.first(3).each do |image| %>
+              <%= attachment_image_tag image, :image, size:"150x150" %>
+              <% end %>
+              </div>
+              </div>
+
+              <p class="card-text text-right">
+                <small class="text-muted">
+                  <%= post.created_at.strftime('%Y/%m/%d') %> |
+                  <i class="fa fa-comment"> <%= post.post.post_comments.count %></i> |
+                  ♥<%= post.post.favorites.count %></small>
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+     </div>
+     <div>
+       <%= paginate(@tag_posts) %>
+     </div>
+  </div>
+</div>

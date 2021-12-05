@@ -18,9 +18,12 @@ Rails.application.routes.draw do
 #ユーザー側
  namespace :user do
   get 'homes/about'
+  get 'posts/search'
   resources :posts
   resources :users, only:[:index,:show,:edit,:update]
  end
+
+
 
  resources :posts do
     resources :post_comments, only: [:create, :destroy]

@@ -22,7 +22,7 @@
         </div>
         <div class="tag-box">
           <% @post.tags.each do |tag| %>
-           <span class="label"><%= tag.name %></span>
+          <span class="label"><%= link_to tag.name, user_posts_search_path(tag_name: tag.name), class: 'text-white' %></span>
           <% end %>
         </div>
         <div class="card-body">
